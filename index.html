@@ -212,7 +212,6 @@
             transition: ease-in 0.5s;
             color: var(--text-color-3);
             font-size: 20px;
-            font-weight: 600;
         }
 
         .teams:hover, .quiz:hover, .timer:hover {
@@ -325,7 +324,7 @@
         
         table {
             padding: 10px;
-            width: 70%;
+            width: 80%;
             border: 2.5px wheat solid;
             border-collapse: collapse;
             border-radius: 28px;
@@ -1153,6 +1152,8 @@
         <details class="folleto">
             
             <summary>Puntaje de Participantes</summary>
+                
+            <p style='text-align:center' id="teams"></p>
             
             <table>
                 
@@ -1167,7 +1168,7 @@
                 </thead>
                     
                 <tbody id="tablaBody"></tbody>
-                    
+            
             </table>
             
         </details>
@@ -1206,11 +1207,6 @@
         };
     
         function girarRuleta() {
-            if (participantes.length < 23) {
-                alert("No hay suficientes participantes. Por favor, reinicia la ruleta.");
-                return;
-            }
-    
             let shuffled = participantes.sort(() => Math.random() - 0.5);
             
             equipos.equipo1 = shuffled.slice(0, 8);
@@ -1261,7 +1257,7 @@
             }
             let index = Math.floor(Math.random() * numeros.length);
             let seleccionado = numeros.splice(index, 1)[0];
-            document.getElementById('numeroSeleccionado').innerHTML = `Pregunta ${seleccionado}`;
+            document.getElementById('numeroSeleccionado').innerHTML = `<b>Pregunta ${seleccionado}</b>`;
         }
     
         document.getElementById('seleccionarNumero').addEventListener('click', function() {
@@ -1274,16 +1270,16 @@
     
         function iniciarContador() {
             let numeroInicial = obtenerNumeroAleatorio(30, 60);
-            document.getElementById('contador').innerHTML = numeroInicial;
+            document.getElementById('contador').innerHTML = `${numeroInicial} s`;
     
             let contador = numeroInicial;
             const intervalo = setInterval(() => {
                 contador--;
-                document.getElementById('contador').innerHTML = contador;
+                document.getElementById('contador').innerHTML = `${contador} s`;
     
                 if (contador <= 0) {
                     clearInterval(intervalo);
-                    document.getElementById('contador').innerHTML = '¡Tiempo!';
+                    document.getElementById('contador').innerHTML = '<b>¡Tiempo!</b>';
                 }
             }, 1000);
         }
@@ -1297,50 +1293,40 @@
     
         function construirTabla(participantesAMostrar = puntajes) {
             const tablaBody = document.getElementById('tablaBody');
-            const tablaFooter = document.getElementById('tablaFooter');
+            const teams = document.getElementById('teams');
             tablaBody.innerHTML = '';
-            tablaFooter.innerHTML = '';
-    
+            teams.innerHTML = '';
+        
             const equiposPuntajes = {
                 equipo1: 0,
                 equipo2: 0,
                 equipo3: 0
             };
-    
-            participantesAMostrar.forEach((participante, index) => {
-                let equipo;
-                if (equipos.equipo1.includes(participante.nombre)) {
-                    equipo = 'equipo1';
-                } else if (equipos.equipo2.includes(participante.nombre)) {
-                    equipo = 'equipo2';
-                } else if (equipos.equipo3.includes(participante.nombre)) {
-                    equipo = 'equipo3';
+        
+            ['equipo1', 'equipo2', 'equipo3'].forEach(equipo => {
+                if (equipos[equipo].length > 0) {
+                    participantesAMostrar.forEach(participante => {
+                        if (equipos[equipo].includes(participante.nombre)) {
+                            const fila = `
+                                <tr style="background-color: ${coloresEquipos[equipo]};">
+                                    <td>${participante.nombre}</td>
+                                    <td style='text-align:center;'>${participante.puntos}</td>
+                                    <td style='text-align:right;'>
+                                        <button onclick="modificarPuntos('${participante.nombre}', 1)">+</button>
+                                        <button onclick="modificarPuntos('${participante.nombre}', -1)">-</button>
+                                    </td>
+                                </tr>
+                            `;
+                            tablaBody.innerHTML += fila;
+                            equiposPuntajes[equipo] += participante.puntos;
+                        }
+                    });
                 }
-    
-                const fila = `
-                    <tr style="background-color: ${coloresEquipos[equipo]};">
-                        <td>${participante.nombre}</td>
-                        <td style='text-align:center;'>${participante.puntos}</td>
-                        <td style='text-align:right;'>
-                            <button onclick="modificarPuntos('${participante.nombre}', 1)">+</button>
-                            <button onclick="modificarPuntos('${participante.nombre}', -1)">-</button>
-                        </td>
-                    </tr>
-                `;
-                tablaBody.innerHTML += fila;
-    
-                equiposPuntajes[equipo] += participante.puntos;
             });
-    
-            const footerFila = `
-                <tr>
-                    <td><strong>Total:</strong></td>
-                    <td style='text-align:center;'><strong>Eq 1: ${equiposPuntajes.equipo1}</strong></td>
-                    <td style='text-align:center;'><strong>Eq 2: ${equiposPuntajes.equipo2}</strong></td>
-                    <td style='text-align:center;'><strong>Eq 3: ${equiposPuntajes.equipo3}</strong></td>
-                </tr>
-            `;
-            tablaFooter.innerHTML = footerFila;
+        
+            const caption = `
+                <b>Equipo 1:</b> ${equiposPuntajes.equipo1} | <b>Equipo 2:</b> ${equiposPuntajes.equipo2} | <b>Equipo 3:</b> ${equiposPuntajes.equipo3}`;
+            teams.innerHTML = caption;
         }
     
         function modificarPuntos(nombre, incremento) {
