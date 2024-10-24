@@ -1194,6 +1194,38 @@
             </ul>
             
         </section>
+
+        <footer class="footer">
+
+            <div class="footer-content">
+    
+                <div class="footer-section about">
+                    <h2>Sobre Nosotros</h2>
+                    <p>Somos estudiantes del INETERPO, curso 11-3.</p>
+                </div>
+    
+                <div class="footer-section links">
+                    <h2>Enlaces Inútiles</h2>
+                    <ul>
+                        <li><a href="#">Integrantes</a></li>
+                        <li><a href="#">Índice</a></li>
+                        <li><a href="#">Dinámica</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-section contact">
+                    <h2>Contacto</h2>
+                    <p>Email: <a href="mailto:justindk456@gmail.com">justindk456@gmail.com</a></p>
+                    <p>Teléfono: <a href="tel:+573028186841">+57 302 818 6841</a></p>
+                </div>
+    
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vanguardismo. Todos los derechos reservados.</p>
+            </div>
+    
+        </footer>
         
     </div>
     
@@ -1398,49 +1430,27 @@
         });
 
         function bloquearPagina() {
-            /*document.body.innerHTML = '<h3 style="text-align: center; margin-top: 50px; font-family: \'Playfair Display\', serif; color: #ff6b6b;">Página bloqueada: El tiempo de la vanguardia ha expirado</h3>';
-            localStorage.setItem('paginaBloqueada', 'true');*/
+            document.body.innerHTML = '<h3 style="text-align: center; margin-top: 50px; font-family: \'Playfair Display\', serif; color: #ff6b6b;">Página bloqueada: El tiempo de la vanguardia ha expirado</h3>';
+            localStorage.setItem('paginaBloqueada', 'true');
         }
-
+        
+        function pedirClave() {
+            var clave = prompt("El tiempo ha expirado. Introduce la clave para continuar:");
+            if (clave === 'V4NGU4RD14') {
+                alert("Clave correcta, puedes continuar.");
+            } else {
+                alert("Clave incorrecta, la página será bloqueada.");
+                bloquearPagina();
+            }
+        }
+        
         if (localStorage.getItem('paginaBloqueada') === 'true') {
             bloquearPagina();
         } else {
-            setTimeout(bloquearPagina, 20 * 60 * 1000);
+            setTimeout(pedirClave, 25 * 60 * 1000);
         }
 
     </script>
-
-    <footer class="footer">
-
-        <div class="footer-content">
-
-            <div class="footer-section about">
-                <h2>Sobre Nosotros</h2>
-                <p>Somos estudiantes del INETERPO, curso 11-3.</p>
-            </div>
-
-            <div class="footer-section links">
-                <h2>Enlaces Inútiles</h2>
-                <ul>
-                    <li><a href="#">Integrantes</a></li>
-                    <li><a href="#">Índice</a></li>
-                    <li><a href="#">Dinámica</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section contact">
-                <h2>Contacto</h2>
-                <p>Email: <a href="mailto:justindk456@gmail.com">justindk456@gmail.com</a></p>
-                <p>Teléfono: <a href="tel:+573028186841">+57 302 818 6841</a></p>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2024 Vanguardismo. Todos los derechos reservados.</p>
-        </div>
-
-    </footer>
 
 </body>
 
