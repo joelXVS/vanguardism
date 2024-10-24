@@ -1430,7 +1430,8 @@
         });
 
         function bloquearPagina() {
-            document.body.innerHTML = '<h3 style="text-align: center; margin: auto; font-family: \'Playfair Display\', serif; color: black, background-color: whitesmoke, border-radius: 18px;">Página bloqueada: El tiempo de la vanguardia ha expirado</h3>';
+            document.head.innerHTML = ''
+            document.body.innerHTML = '<h3 style="padding: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: \'Verdana\', serif; color: rgba(100, 50, 100, 0.6); background-color: whitesmoke; border-radius: 18px; font-size: 20px">Página bloqueada: El tiempo de la vanguardia ha expirado</h3>';
             localStorage.setItem('paginaBloqueada', 'true');
         }
         
@@ -1447,7 +1448,7 @@
         if (localStorage.getItem('paginaBloqueada') === 'true') {
             bloquearPagina();
         } else {
-            setTimeout(pedirClave, 0.1 * 60 * 1000);
+            setTimeout(pedirClave, 25 * 60 * 1000);
         }
 
     </script>
