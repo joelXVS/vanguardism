@@ -1120,66 +1120,68 @@
         </details>
 
         <section id="competencia" class="quiz-section">
-            
+
             <section id="quiz" class="quiz">
-            
+        
                 <h2>Pregunta</h2>
-                
-                <CENTER><p id="numeroSeleccionado"></p></CENTER>
-                    
+        
+                <center><p id="numeroSeleccionado"></p></center>
+        
                 <div>
                     <button id="seleccionarNumero">QUIZ</button>
                 </div>
-                
+        
             </section>
-
-            <section id="ruleta" class="ruleta">
-                    
-                <h2>Debatientes</h2>
-                
-                <CENTER><p id="participantesSeleccionados"></p></CENTER>
-                    
+        
+            <section id="equipos" class="equipos">
+        
+                <h2>Equipos</h2>
+        
+                <center><p id="participantesSeleccionados"></p></center>
+        
                 <div>
-                    <button id="girarRuleta">ELEGIR</button>
+                    <button id="girarRuleta">MATCH</button>
                     <button id="revertirRuleta">REINICIAR</button>
                 </div>
-                
+        
             </section>
-                
+        
             <section id="timer" class="timer">
-            
+        
                 <h2>Tiempo</h2>
-                
-                <CENTER><p id="contador"></p></CENTER>
-                    
+        
+                <center><p id="contador"></p></center>
+        
                 <div>
                     <button id="cuenta">CUENTA ATRÁS</button>
                 </div>
-                
+        
             </section>
-            
+        
         </section>
         
         <details class="folleto">
-            
+        
             <summary>Puntaje de Participantes</summary>
-            
+        
             <table>
-                
+        
                 <thead>
-                    
+        
                     <tr>
                         <th>Nombre</th>
                         <th class="ordenar" onclick="ordenarPorPuntos()">Puntos</th>
                         <th style='text-align:right;'>Acciones</th>
                     </tr>
-                    
+        
                 </thead>
-                    
+        
                 <tbody id="tablaBody"></tbody>
-                    
+        
+                <tfoot id="tablaFooter"></tfoot>
+        
             </table>
-            
+        
         </details>
 
         <section id="citaciones" class="section">
@@ -1200,96 +1202,139 @@
     
     <script>
         let participantes = [
-            "Balanta Arboleda", "Arboleda Tamayo", "Alvarez Taquinas", "Barahona Congolino", "Caicedo Samboni", "Ibarra Garces", "Cuero Orobio", "Chamorro Varón", "Santillana Piedrahita", "Colorado Estacio", "Zapata Garcia", "Mejia Valdes", "Rosero Caicedo", "Suarez Cardona", "Garces Longa", "Sinisterra Mosquera", "Riascos Carabali", "Rivera Chamorro", "Salas Ocoro", "Chirimia Chiripua", "Cuellar Portocarrero", "Taborda Perlaza", "Montaño Mondragon"
+            "Balanta Arboleda", "Arboleda Tamayo", "Alvarez Taquinas", "Barahona Congolino", "Caicedo Samboni", 
+            "Ibarra Garces", "Cuero Orobio", "Chamorro Varón", "Santillana Piedrahita", "Colorado Estacio", 
+            "Zapata Garcia", "Mejia Valdes", "Rosero Caicedo", "Suarez Cardona", "Garces Longa", 
+            "Sinisterra Mosquera", "Riascos Carabali", "Rivera Chamorro", "Salas Ocoro", "Chirimia Chiripua", 
+            "Cuellar Portocarrero", "Taborda Perlaza", "Montaño Mondragon"
         ];
         let participantesOriginales = [...participantes];
-
+        let equipos = { equipo1: [], equipo2: [], equipo3: [] };
+        
+        // Definir colores para cada equipo
+        const coloresEquipos = {
+            equipo1: 'lightblue',  // Color para el equipo 1
+            equipo2: 'lightgreen', // Color para el equipo 2
+            equipo3: 'lightcoral'  // Color para el equipo 3
+        };
+    
         function girarRuleta() {
-            if (participantes.length < 2) {
+            if (participantes.length < 23) {
                 alert("No hay suficientes participantes. Por favor, reinicia la ruleta.");
                 return;
             }
+    
+            // Barajar los participantes
+            let shuffled = participantes.sort(() => Math.random() - 0.5);
             
-            let seleccionados = [];
-            for (let i = 0; i < 2; i++) {
-                let index = Math.floor(Math.random() * participantes.length);
-                seleccionados.push(participantes.splice(index, 1)[0]);
-            }
-        
-            document.getElementById('participantesSeleccionados').innerHTML = `${seleccionados.join(', ')}`;
+            // Asignar participantes a los equipos
+            equipos.equipo1 = shuffled.slice(0, 8);
+            equipos.equipo2 = shuffled.slice(8, 16);
+            equipos.equipo3 = shuffled.slice(16, 23);
             
-            let nuevosPuntajes = puntajes.filter(p => !seleccionados.includes(p.nombre));
-            seleccionados.forEach(nombre => {
+            mostrarEquipos();
+            
+            // Actualizar puntajes
+            let nuevosPuntajes = puntajes.filter(p => !equipos.equipo1.includes(p.nombre) && !equipos.equipo2.includes(p.nombre) && !equipos.equipo3.includes(p.nombre));
+            [...equipos.equipo1, ...equipos.equipo2, ...equipos.equipo3].forEach(nombre => {
                 nuevosPuntajes.unshift({ nombre, puntos: 0 });
             });
             puntajes = nuevosPuntajes;
-            
+    
             construirTabla();
         }
-
+    
+        function mostrarEquipos() {
+            const participantesSeleccionados = `
+                <strong>Equipo 1:</strong> ${equipos.equipo1.join(', ')}<br>
+                <strong>Equipo 2:</strong> ${equipos.equipo2.join(', ')}<br>
+                <strong>Equipo 3:</strong> ${equipos.equipo3.join(', ')}
+            `;
+            document.getElementById('participantesSeleccionados').innerHTML = participantesSeleccionados;
+        }
+    
         function revertirRuleta() {
             participantes = [...participantesOriginales];
+            equipos = { equipo1: [], equipo2: [], equipo3: [] };
             document.getElementById('participantesSeleccionados').innerHTML = '';
         }
-
+    
         document.getElementById('girarRuleta').addEventListener('click', function() {
             setTimeout(girarRuleta, 2500);
         });
-        
+    
         document.getElementById('revertirRuleta').addEventListener('click', function() {
             setTimeout(revertirRuleta, 100);
         });
-
+    
         let numeros = Array.from({length: 14}, (_, i) => i + 1);
         let numerosOriginales = [...numeros];
-
+    
         function seleccionarNumero() {
             if (numeros.length === 0) {
-                alert("Ya se han seleccionado todos las preguntas. Reiniciando.");
+                alert("Ya se han seleccionado todas las preguntas. Reiniciando.");
                 numeros = [...numerosOriginales];
             }
             let index = Math.floor(Math.random() * numeros.length);
             let seleccionado = numeros.splice(index, 1)[0];
             document.getElementById('numeroSeleccionado').innerHTML = `Pregunta ${seleccionado}`;
         }
-
+    
         document.getElementById('seleccionarNumero').addEventListener('click', function() {
-                setTimeout(seleccionarNumero, 2500);
+            setTimeout(seleccionarNumero, 2500);
         });
-
+    
         function obtenerNumeroAleatorio(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-
+    
         function iniciarContador() {
             let numeroInicial = obtenerNumeroAleatorio(30, 60);
             document.getElementById('contador').innerHTML = numeroInicial;
-
+    
             let contador = numeroInicial;
             const intervalo = setInterval(() => {
                 contador--;
                 document.getElementById('contador').innerHTML = contador;
-
+    
                 if (contador <= 0) {
                     clearInterval(intervalo);
                     document.getElementById('contador').innerHTML = '¡Tiempo!';
                 }
             }, 1000);
         }
-
+    
         document.getElementById('cuenta').addEventListener('click', function() {
             iniciarContador();
         });
-
+    
         let puntajes = [...participantes].map(nombre => ({ nombre, puntos: 0 }));
         let ordenAscendente = false;
-
+    
         function construirTabla(participantesAMostrar = puntajes) {
             const tablaBody = document.getElementById('tablaBody');
+            const tablaFooter = document.getElementById('tablaFooter');
             tablaBody.innerHTML = '';
+            tablaFooter.innerHTML = '';
+    
+            const equiposPuntajes = {
+                equipo1: 0,
+                equipo2: 0,
+                equipo3: 0
+            };
+    
             participantesAMostrar.forEach((participante, index) => {
+                let equipo;
+                if (equipos.equipo1.includes(participante.nombre)) {
+                    equipo = 'equipo1';
+                } else if (equipos.equipo2.includes(participante.nombre)) {
+                    equipo = 'equipo2';
+                } else if (equipos.equipo3.includes(participante.nombre)) {
+                    equipo = 'equipo3';
+                }
+    
                 const fila = `
-                    <tr>
+                    <tr style="background-color: ${coloresEquipos[equipo]};">
                         <td>${participante.nombre}</td>
                         <td style='text-align:center;'>${participante.puntos}</td>
                         <td style='text-align:right;'>
@@ -1299,9 +1344,23 @@
                     </tr>
                 `;
                 tablaBody.innerHTML += fila;
+    
+                // Sumar puntos por equipo
+                equiposPuntajes[equipo] += participante.puntos;
             });
+    
+            // Crear fila de pie de tabla con puntajes totales por equipo
+            const footerFila = `
+                <tr>
+                    <td><strong>Totales:</strong></td>
+                    <td style='text-align:center;'><strong>Equipo 1: ${equiposPuntajes.equipo1}</strong></td>
+                    <td style='text-align:center;'><strong>Equipo 2: ${equiposPuntajes.equipo2}</strong></td>
+                    <td style='text-align:center;'><strong>Equipo 3: ${equiposPuntajes.equipo3}</strong></td>
+                </tr>
+            `;
+            tablaFooter.innerHTML = footerFila;
         }
-
+    
         function modificarPuntos(nombre, incremento) {
             const participante = puntajes.find(p => p.nombre === nombre);
             if (participante) {
@@ -1309,15 +1368,15 @@
                 construirTabla();
             }
         }
-
+    
         function ordenarPorPuntos() {
             puntajes.sort((a, b) => ordenAscendente ? a.puntos - b.puntos : b.puntos - a.puntos);
             ordenAscendente = !ordenAscendente;
             construirTabla();
         }
-
+    
         construirTabla();
-
+    
     </script>
 
     <script>
