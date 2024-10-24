@@ -1211,30 +1211,21 @@
         let participantesOriginales = [...participantes];
         let equipos = { equipo1: [], equipo2: [], equipo3: [] };
         
-        // Definir colores para cada equipo
         const coloresEquipos = {
-            equipo1: 'lightblue',  // Color para el equipo 1
-            equipo2: 'lightgreen', // Color para el equipo 2
-            equipo3: 'lightcoral'  // Color para el equipo 3
+            equipo1: 'lightblue',
+            equipo2: 'lightgreen',
+            equipo3: 'lightcoral'
         };
     
         function girarRuleta() {
-            if (participantes.length < 23) {
-                alert("No hay suficientes participantes. Por favor, reinicia la ruleta.");
-                return;
-            }
-    
-            // Barajar los participantes
             let shuffled = participantes.sort(() => Math.random() - 0.5);
             
-            // Asignar participantes a los equipos
             equipos.equipo1 = shuffled.slice(0, 8);
             equipos.equipo2 = shuffled.slice(8, 16);
             equipos.equipo3 = shuffled.slice(16, 23);
             
             mostrarEquipos();
             
-            // Actualizar puntajes
             let nuevosPuntajes = puntajes.filter(p => !equipos.equipo1.includes(p.nombre) && !equipos.equipo2.includes(p.nombre) && !equipos.equipo3.includes(p.nombre));
             [...equipos.equipo1, ...equipos.equipo2, ...equipos.equipo3].forEach(nombre => {
                 nuevosPuntajes.unshift({ nombre, puntos: 0 });
@@ -1345,11 +1336,9 @@
                 `;
                 tablaBody.innerHTML += fila;
     
-                // Sumar puntos por equipo
                 equiposPuntajes[equipo] += participante.puntos;
             });
     
-            // Crear fila de pie de tabla con puntajes totales por equipo
             const footerFila = `
                 <tr>
                     <td><strong>Totales:</strong></td>
