@@ -29,8 +29,6 @@
             --color-five: rgb(48, 136, 136);
             --special-color: rgba(255, 102, 0, 0.8);
             --table-head: #d8d8d8;
-            --table-body-1: rgba(110, 90, 110, 0.8);
-            --table-body-2: rgba(90, 110, 90, 0.8);
             --footer-underline-color: #ff6b6b60;
         }
         
@@ -202,7 +200,7 @@
             color: var(--text-color-2);
         }
         
-        .teams, .quiz, .timer {
+        .ruleta, .teams, .timer {
             background-color: var(--secondary-color);
             padding: 10px 0;
             border-radius: 15px;
@@ -217,7 +215,7 @@
             font-weight: 600;
         }
 
-        .teams:hover, .quiz:hover, .timer:hover {
+        .ruleta:hover, .teams:hover, .timer:hover {
             background-color: var(--hover-secondary-color);
             border-radius: 18px;
         }
@@ -349,14 +347,6 @@
         td {
             background-color: var(--table-body-1);
             font-weight: bold;
-        }
-
-        tbody tr:nth-child(odd) td {
-            background-color: var(--table-body-1);
-        }
-
-        tbody tr:nth-child(even) td {
-            background-color: var(--table-body-2);
         }
         
         .ordenar {
@@ -1120,21 +1110,21 @@
         </details>
 
         <section id="competencia" class="quiz-section">
-
+            
             <section id="quiz" class="quiz">
-        
+            
                 <h2>Pregunta</h2>
-        
-                <center><p id="numeroSeleccionado"></p></center>
-        
+                
+                <CENTER><p id="numeroSeleccionado"></p></CENTER>
+                    
                 <div>
                     <button id="seleccionarNumero">QUIZ</button>
                 </div>
-        
+                
             </section>
-        
+
             <section id="equipos" class="teams">
-        
+
                 <h2>Equipos</h2>
         
                 <center><p id="participantesSeleccionados"></p></center>
@@ -1145,43 +1135,41 @@
                 </div>
         
             </section>
-        
+                
             <section id="timer" class="timer">
-        
+            
                 <h2>Tiempo</h2>
-        
-                <center><p id="contador"></p></center>
-        
+                
+                <CENTER><p id="contador"></p></CENTER>
+                    
                 <div>
                     <button id="cuenta">CUENTA ATRÁS</button>
                 </div>
-        
+                
             </section>
-        
+            
         </section>
         
         <details class="folleto">
-        
+            
             <summary>Puntaje de Participantes</summary>
-        
+            
             <table>
-        
+                
                 <thead>
-        
+                    
                     <tr>
                         <th>Nombre</th>
                         <th class="ordenar" onclick="ordenarPorPuntos()">Puntos</th>
                         <th style='text-align:right;'>Acciones</th>
                     </tr>
-        
+                    
                 </thead>
-        
+                    
                 <tbody id="tablaBody"></tbody>
-        
-                <tfoot id="tablaFooter"></tfoot>
-        
+                    
             </table>
-        
+            
         </details>
 
         <section id="citaciones" class="section">
@@ -1212,12 +1200,17 @@
         let equipos = { equipo1: [], equipo2: [], equipo3: [] };
         
         const coloresEquipos = {
-            equipo1: 'lightblue',
+            equipo1: 'lightblue', 
             equipo2: 'lightgreen',
             equipo3: 'lightcoral'
         };
     
         function girarRuleta() {
+            if (participantes.length < 23) {
+                alert("No hay suficientes participantes. Por favor, reinicia la ruleta.");
+                return;
+            }
+    
             let shuffled = participantes.sort(() => Math.random() - 0.5);
             
             equipos.equipo1 = shuffled.slice(0, 8);
@@ -1341,10 +1334,10 @@
     
             const footerFila = `
                 <tr>
-                    <td><strong>Totales:</strong></td>
-                    <td style='text-align:center;'><strong>Equipo 1: ${equiposPuntajes.equipo1}</strong></td>
-                    <td style='text-align:center;'><strong>Equipo 2: ${equiposPuntajes.equipo2}</strong></td>
-                    <td style='text-align:center;'><strong>Equipo 3: ${equiposPuntajes.equipo3}</strong></td>
+                    <td><strong>Total:</strong></td>
+                    <td style='text-align:center;'><strong>Eq 1: ${equiposPuntajes.equipo1}</strong></td>
+                    <td style='text-align:center;'><strong>Eq 2: ${equiposPuntajes.equipo2}</strong></td>
+                    <td style='text-align:center;'><strong>Eq 3: ${equiposPuntajes.equipo3}</strong></td>
                 </tr>
             `;
             tablaFooter.innerHTML = footerFila;
