@@ -1430,9 +1430,15 @@
         });
 
         function bloquearPagina() {
-            document.head.innerHTML = ''
+            document.head.innerHTML = '';
             document.body.innerHTML = '<h3 style="padding: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: \'Verdana\', serif; color: rgba(100, 50, 100, 0.6); background-color: whitesmoke; border-radius: 18px; font-size: 20px">Página bloqueada: El tiempo de la vanguardia ha expirado</h3>';
             localStorage.setItem('paginaBloqueada', 'true');
+        
+            document.addEventListener('keydown', function(event) {
+                if (event.key.toLowerCase() === 'r') {
+                    pedirClaveParaDesbloquear();
+                }
+            });
         }
         
         function pedirClave() {
@@ -1445,12 +1451,23 @@
             }
         }
         
+        function pedirClaveParaDesbloquear() {
+            var clave = prompt("La página está bloqueada. Introduce la clave para desbloquear:");
+            if (clave === 'V4NGU4RD14') {
+                alert("Clave correcta, la página será reiniciada.");
+                localStorage.removeItem('paginaBloqueada');
+                location.reload();
+            } else {
+                alert("Clave incorrecta. La página sigue bloqueada.");
+            }
+        }
+        
         if (localStorage.getItem('paginaBloqueada') === 'true') {
             bloquearPagina();
         } else {
             setTimeout(pedirClave, 25 * 60 * 1000);
         }
-
+        
     </script>
 
 </body>
