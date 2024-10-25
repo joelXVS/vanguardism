@@ -1439,7 +1439,7 @@
                         Página bloqueada: ¡El tiempo de la vanguardia ha expirado!
                     </h3>
                     
-                    <button class='unlock-button' id="desbloquearBtn" style="padding: 10px 20px; border: 1px rgba(100, 50, 100, 0.6) solid; border-radius: 15px; font-size: 16px; cursor: pointer; transition: ease-in 0.3s">
+                    <button class='unlock-button' id="desbloquearBtn">
                         ¿Desbloquear?
                     </button>
                     
@@ -1448,9 +1448,21 @@
                 <style>
                 
                     .unlock-button:hover {
+                        opacity: 1;
                         background-color: rgba(100, 50, 100, 0.8);
                         transform: scale(1.1);
                         color: white;
+                    }
+                    
+                    .unlock-button {
+                        opacity: 0.5;
+                        background-color: lightgray;
+                        padding: 10px 20px;
+                        border: 2px rgba(100, 50, 100, 0.6) solid;
+                        border-radius: 15px; 
+                        font-size: 16px;
+                        cursor: pointer; 
+                        transition: ease-in 0.3s
                     }
                     
                 </style>
