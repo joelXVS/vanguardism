@@ -1437,10 +1437,18 @@
                         Página bloqueada: ¡El tiempo de la vanguardia ha expirado!
                     </h3>
                     
-                    <button id="desbloquearBtn" style="padding: 10px 20px; background-color: #643264; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                    <button id="desbloquearBtn" style="padding: 10px 20px; background-color: #643264; color: gray; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: all 0.3s ease">
                         ¿Desbloquear?
                     </button>
                 </div>
+
+                <style>
+                    #desbloquearBtn:hover {
+                        background-color: #7d3f7f;
+                        transform: translate(-50%, -50%) scale(1.1);
+                        color: white;
+                    }
+                </style>
             `;
             localStorage.setItem('paginaBloqueada', 'true');
         
