@@ -5,7 +5,7 @@
     
     <meta charset="UTF-8">
     
-    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <meta name="viewport" content="width=device-width, initial-scale=0.78">
     
     <title>El Vanguardismo</title>
     
@@ -47,7 +47,6 @@
             border: 4px solid rgba(255, 100, 0, 0.2);
             zoom: 78%;
             scrollbar-width: none;
-            scrollbar-color: var(--primary-color), var(--hover-secondary-color);
         }
         
         header {
@@ -62,7 +61,7 @@
         
         header h1 {
             color: black;
-            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
             border-radius: 100px;
             margin: 4px auto;
             zoom: calc(100% - 20%);
@@ -71,25 +70,18 @@
 
         header p {
             color: black;
-            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
             border-radius: 100px;
             margin: 0 auto;
             text-align: center;
             width: 290px;
         }
 
-        h1, h2 {
+        h2 {
             font-family: 'Calibri', serif;
             text-transform: uppercase;
             letter-spacing: 5px;
             margin: 0;
-        }
-        
-        h1 {
-            font-size: 3rem;
-        }
-        
-        h2 {
             font-size: 2rem;
             color: var(--text-color);
             text-align: center;
@@ -101,9 +93,6 @@
             width: calc(100% - 40px);
             margin: 4px 0;
             border-radius: 50px;
-            position: sticky;
-            left: 20px;
-            z-index: 1000;
         }
         
         nav ul {
@@ -126,7 +115,7 @@
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
-            transition: ease-in 0.3s;
+            transition: all ease-in 0.3s;
         }
         
         nav ul li a:hover {
@@ -152,7 +141,7 @@
             padding: 2rem;
             border-radius: 18px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
-            transition: ease-in-out 0.5s;
+            transition: all ease-in-out 0.5s;
         }
 
         .quiz-section {
@@ -184,7 +173,7 @@
             border-radius: 10px;
             margin-bottom: 2rem;
             cursor: pointer;
-            transition: ease-in-out 0.5s;
+            transition: all ease-in-out 0.5s;
         }
         
         details[open] {
@@ -211,7 +200,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             margin: 5px auto;
             justify-items: center;
-            transition: ease-in 0.5s;
+            transition: all ease-in 0.5s;
             color: var(--text-color-3);
             font-size: 20px;
         }
@@ -234,7 +223,7 @@
             margin: 5px;
             border-radius: 5px;
             cursor: pointer;
-            transition: ease-in-out 0.5s;
+            transition: all ease-in-out 0.5s;
         }
         
         button:hover {
@@ -249,7 +238,7 @@
             border-radius: 10px;
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: ease-out 0.5s;
+            transition: all ease-out 0.5s;
         }
         
         .indice ul {
@@ -265,7 +254,7 @@
         .indice a {
             color: var(--text-color);
             text-decoration: none;
-            transition: ease-in 0.4s;
+            transition: all ease-in 0.4s;
         }
         
         .indice:hover {
@@ -359,7 +348,7 @@
             cursor: pointer;
             color: #000000;
             text-align: center;
-            transition: ease-out 0.4s;
+            transition: all ease-out 0.4s;
         }
         
         .ordenar:hover {
@@ -412,7 +401,7 @@
         .footer-section a {
             text-decoration: none;
             color: whitesmoke;
-            transition: ease-in-out 0.2s;
+            transition: all ease-in-out 0.2s;
         }
 
         .footer-section a:hover {
@@ -434,7 +423,6 @@
             to {
                 transform: translateY(0) ease-in;
                 opacity: 1;
-                transition: all 0.5s cubic-bezier(0.1, 0.25, 1, 0.25);
             }
         }
 
@@ -457,7 +445,6 @@
             to {
                 transform: translateY(0) ease-out;
                 opacity: 1;
-                transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
             }
         }
 
