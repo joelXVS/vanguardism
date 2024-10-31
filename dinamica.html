@@ -531,6 +531,22 @@
     
     </script>
 
+    <script> // Ir a la pagína principal
+        
+        document.addEventListener('keydown', function(event) {
+          if ((event.key === 'B' && event.shiftKey) || event.key === 'B') {
+            const password = prompt("Introduce la clave de administrador:");
+    
+            if (password === '4dm1n') {
+                window.location.href = 'index.html';
+            } else {
+                alert("Clave incorrecta. Inténtalo de nuevo.");
+            }
+          }
+        });
+    
+    </script>
+
 </body>
 
 </html>
