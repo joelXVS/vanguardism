@@ -14,36 +14,30 @@
         @import url('https://fonts.googleapis.com/css2?family=Futura&family=Playfair+Display:wght@700&display=swap');
         
         :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4ecdc4;
-            --hover-primary-color: #bd3a3a;
-            --hover-secondary-color: #16534f;
-            --text-color: #000000;
-            --text-color-2: #363131;
-            --text-color-3: #110f0f;
-            --background-color: #f8f8f8;
-            --color-one: rgba(239, 230, 239, 0.8);
-            --color-two: rgba(230, 239, 230, 0.8);
-            --color-three: rgba(0, 0, 0, 0.9);
-            --color-four: rgb(0, 87, 87);
-            --color-five: rgb(48, 136, 136);
-            --special-color: rgba(255, 102, 0, 0.8);
-            --table-head: #d8d8d8;
-            --footer-underline-color: #ff6b6b60;
+            --primary-color: rgba(193, 66, 66, 1);
+            --secondary-color: rgba(58, 129, 150, 1);
+            --hover-primary-color: rgba(128, 36, 36, 1);
+            --hover-secondary-color: rgba(19, 73, 83, 1);
+            --text-color: rgba(28, 27, 27, 1);
+            --text-color-2: rgba(40, 41, 41, 1);
+            --text-color-3: rgba(22, 18, 18, 1);
+            --background-color: rgba(244, 242, 242, 1);
+            --color-one: rgba(210, 190, 210, 0.8);
+            --color-two: rgba(210, 220, 210, 0.8);
+            --color-three: rgba(20, 18, 18, 0.9);
+            --color-four: rgba(0, 50, 70, 1);
+            --color-five: rgba(34, 78, 90, 1);
+            --special-color: rgba(240, 110, 10, 0.8);
+            --table-head: rgba(190, 190, 190, 1);
+            --footer-underline-color: rgba(235, 100, 100, 0.38);
         }
         
         body {
-            font-family: 'Verdana', sans-serif;
-            line-height: 1.6;
+            font: 20px/1.6 'Verdana', sans-serif;
             margin: 0;
-            font-size: 20px;
             padding: 0;
             color: var(--text-color);
-            background-image: url('Vanguardismo/imagenes/fondos/background.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            background: url('Vanguardismo/imagenes/fondos/background.png') no-repeat fixed center/cover;
             border: 4px solid rgba(255, 100, 0, 0.2);
             zoom: 78%;
             scrollbar-width: none;
@@ -53,8 +47,7 @@
             background-image: url('Vanguardismo/imagenes/fondos/background2.jpeg');
             padding: 2rem;
             color: var(--color-three);
-            font-size: 25px;
-            font-weight: 400;
+            font: 400 25px/1;
             text-align: center;
             border-bottom: 4px solid rgba(255, 100, 0, 0.5);
         }
@@ -79,36 +72,35 @@
         }
 
         h2 {
-            font-family: 'Calibri', serif;
+            font: bolder 2rem 'Calibri', serif;
             text-transform: uppercase;
             letter-spacing: 5px;
-            margin: 0;
-            font-size: 2rem;
+            margin: 0 0 1rem 0;
             color: var(--text-color);
             text-align: center;
-            margin-bottom: 1rem;
         }
         
         nav {
             background-color: var(--secondary-color);
             width: calc(100% - 40px);
-            margin: 4px 0;
-            border-radius: 50px;
+            margin: 4px auto;
+            border-radius: 40px;
         }
         
         nav ul {
             list-style-type: none;
             padding: 0;
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
         }
         
         nav ul li {
             margin: 5px 15px;
             background-color: rgba(255, 255, 255, 0.07);
-            border-radius: 15px;
+            border-radius: 40px;
             padding: 5px;
+            display: block;
+            margin: 10px auto;
         }
         
         nav ul li a {
@@ -130,120 +122,94 @@
             animation: slideDown 1s ease-out forwards;
         }
         
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
         .section {
-            background-color: var(--color-one);
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 18px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
             transition: all ease-in-out 0.5s;
         }
 
         .quiz-section {
-            background-color: var(--color-one);
-            margin: 2rem auto;
-            width: auto;
-            padding: 2rem;
-            border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
         }
 
-        .section:hover {
-            background-color: var(--color-two);
-            border-radius: 20px;
+        .section, .quiz-section {
+            background-color: var(--color-one);
+            width: 100vw;
+            padding: 2rem;
+            border-radius: 18px;
+            margin: 2rem auto;
         }
 
-        .quiz-section:hover {
+        .section:hover, .quiz-section:hover {
             background-color: var(--color-two);
-            border-radius: 12px;
         }
         
         .folleto {
-            background-color: var(--color-five);
-            border: 2px solid var(--color-four);
+            background-color: var(--primary-color);
+            border: 2px solid var(--color-one);
             padding: 1rem;
             border-radius: 10px;
-            margin-bottom: 2rem;
+            margin: 0 auto;
             cursor: pointer;
             transition: all ease-in-out 0.5s;
+            width: 100vw;
         }
         
-        details[open] {
-            background-color: var(--color-one);
-        }
-
-        .folleto:hover {
-            background-color: var(--color-five);
-            border: 2px solid var(--color-four);
-        }
-
         .folleto summary {
             cursor: pointer;
             font-weight: bold;
-            color: var(--text-color-2);
+            color: white;
+            transition: all ease-in-out 0.3s;
+        }
+
+        .folleto:hover {
+            filter: invert(100%);
         }
         
         .teams, .quiz, .timer {
             background-color: var(--secondary-color);
-            padding: 10px 0;
+            padding: 14px;
             border-radius: 15px;
             width: 360px;
-            height: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             margin: 5px auto;
-            justify-items: center;
             transition: all ease-in 0.5s;
             color: var(--text-color-3);
             font-size: 20px;
         }
 
-        .teams {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
         .teams:hover, .quiz:hover, .timer:hover {
-            background-color: var(--hover-secondary-color);
-            border-radius: 18px;
+            transform: translateY(-2px);
         }
         
         button {
             background-color: var(--primary-color);
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            margin: 5px;
+            padding: 10px;
+            display: block;
+            margin: 5px auto;
             border-radius: 5px;
             cursor: pointer;
             transition: all ease-in-out 0.5s;
         }
         
         button:hover {
-            background-color: var(--hover-primary-color);
-            color: black;
+            filter: invert(100%);
             transform: translateY(-2px);
         }
         
         .indice {
             background-color: var(--color-two);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
+            width: 110vw;
+            padding: 2rem;
+            border-radius: 18px;
+            margin: 2rem auto;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all ease-out 0.5s;
         }
         
         .indice ul {
-            list-style-type: int;
+            list-style-type: decimal;
             padding-left: 3rem;
         }
         
@@ -257,7 +223,7 @@
             text-decoration: none;
             transition: all ease-in 0.4s;
         }
-        
+
         .indice:hover {
             background-color: var(--color-one);
         }
@@ -358,10 +324,8 @@
 
         .footer {
             font-family: Verdana, serif;
-            margin: 0;
             background-color: var(--text-color-2);
             color: white;
-            padding: 20px;
             text-align: center;
             border: 3px solid var(--footer-underline-color);
             opacity: 0;
@@ -371,13 +335,11 @@
 
         .footer-content {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            padding: 20px;
         }
 
         .footer-section {
             flex: 1;
-            padding: 10px;
         }
 
         .footer-section h2 {  
@@ -386,17 +348,7 @@
         }
 
         .footer-section p {  
-            text-align: 'right';
             color: whitesmoke;
-        }
-
-        .footer-section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin: 5px 0;
         }
 
         .footer-section a {
@@ -412,7 +364,6 @@
 
         .footer-bottom {
             text-align: center;
-            margin-top: 20px;
             font-size: 1em;
         }
 
@@ -536,7 +487,8 @@
             
             <h2>Introducción al Vanguardismo</h2>
             
-            <p>La literatura vanguardista fue un movimiento cultural y artístico de principios del siglo XX que revolucionó las formas tradicionales de escritura y arte. Surgió como una respuesta a las crisis políticas, sociales y culturales de su tiempo, y se caracterizó por su ruptura con las convenciones literarias, su experimentación formal y su búsqueda de nuevas formas de expresar la subjetividad y la complejidad del mundo moderno. Los escritores vanguardistas, a través de técnicas como el monólogo interior, la escritura automática y el flujo de conciencia, exploraron lo irracional, lo subconsciente y lo absurdo, influyendo no solo en la literatura, sino también en la sociedad y la cultura global.</p>
+            <p>La literatura vanguardista fue un movimiento cultural y artístico de principios del siglo XX que revolucionó las formas tradicionales de escritura y arte. Surgió como una respuesta a las crisis políticas, sociales y culturales de su tiempo, y se caracterizó por su ruptura con las convenciones literarias, su experimentación formal y su búsqueda de nuevas formas de expresar la subjetividad y la complejidad del mundo moderno. </p>
+            <p>Los escritores vanguardistas, a través de técnicas como el monólogo interior, la escritura automática y el flujo de conciencia, exploraron lo irracional, lo subconsciente y lo absurdo, influyendo no solo en la literatura, sino también en la sociedad y la cultura global.</p>
                         
         </section>
 
@@ -791,7 +743,7 @@
                         <img src="Vanguardismo/imagenes/obras/ulises.png" alt="Ulises - James Joyce (1922)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Ulises - James Joyce (1922)</h2>
-                            <p>"Sí, dije sí, quiero. Sí." (*Ulises*, monólogo interior de Molly Bloom)</p>
+                            <p>"Sí, dije sí, quiero. Sí." (<b>Ulises</b>, monólogo interior de Molly Bloom)</p>
                         </div>
                     </div>
                     
@@ -799,7 +751,7 @@
                         <img src="Vanguardismo/imagenes/obras/dubliners.png" alt="Dublineses - James Joyce (1914)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Dublineses - James Joyce (1914)</h2>
-                            <p>"Vivió en un sueño, al principio un sueño de amor, luego en el de la muerte." (*Los muertos*, cuento de *Dublineses*)</p>
+                            <p>"Vivió en un sueño, al principio un sueño de amor, luego en el de la muerte." (<b>Los muertos</b>, cuento de <b>Dublineses</b>)</p>
                         </div>
                     </div>
                     
@@ -807,7 +759,7 @@
                         <img src="Vanguardismo/imagenes/obras/castillo.png" alt="El castillo - Franz Kafka (1926)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>El castillo - Franz Kafka (1926)</h2>
-                            <p>"Las mentiras son la única cosa que puede mantener en movimiento el mundo tal como es." (*El castillo*)</p>
+                            <p>"Las mentiras son la única cosa que puede mantener en movimiento el mundo tal como es." (<b>El castillo</b>)</p>
                         </div>
                     </div>
                     
@@ -815,7 +767,7 @@
                         <img src="Vanguardismo/imagenes/obras/metamorfosis.png" alt="La metamorfosis - Franz Kafka (1915)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>La metamorfosis - Franz Kafka (1915)</h2>
-                            <p>"Al despertar Gregor Samsa una mañana, tras un sueño intranquilo, se encontró en su cama convertido en un monstruoso insecto." (*La metamorfosis*)</p>
+                            <p>"Al despertar Gregor Samsa una mañana, tras un sueño intranquilo, se encontró en su cama convertido en un monstruoso insecto." (<b>La metamorfosis</b>)</p>
                         </div>
                     </div>
                     
@@ -823,7 +775,7 @@
                         <img src="Vanguardismo/imagenes/obras/cien_años.png" alt="Cien años de soledad - Gabriel García Márquez (1967)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Cien años de soledad - Gabriel García Márquez (1967)</h2>
-                            <p>"El secreto de una buena vejez no es otra cosa que un pacto honrado con la soledad." (*Cien años de soledad*)</p>
+                            <p>"El secreto de una buena vejez no es otra cosa que un pacto honrado con la soledad." (<b>Cien años de soledad</b>)</p>
                         </div>
                     </div>
                     
@@ -831,7 +783,7 @@
                         <img src="Vanguardismo/imagenes/obras/cronica.png" alt="Crónica de una muerte anunciada - Gabriel García Márquez (1981)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Crónica de una muerte anunciada - Gabriel García Márquez (1981)</h2>
-                            <p>"El día en que lo iban a matar, Santiago Nasar se levantó a las 5:30 de la mañana." (*Crónica de una muerte anunciada*)</p>
+                            <p>"El día en que lo iban a matar, Santiago Nasar se levantó a las 5:30 de la mañana." (<b>Crónica de una muerte anunciada</b>)</p>
                         </div>
                     </div>
                     
@@ -839,7 +791,7 @@
                         <img src="Vanguardismo/imagenes/obras/orlando.png" alt="Orlando - Virginia Woolf (1928)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Orlando - Virginia Woolf (1928)</h2>
-                            <p>"Amor, el amor, el amor, fue el único motivo por el que alguien alguna vez escribió o habló, pintó, cantó o susurró." (*Orlando*)</p>
+                            <p>"Amor, el amor, el amor, fue el único motivo por el que alguien alguna vez escribió o habló, pintó, cantó o susurró." (<b>Orlando</b>)</p>
                         </div>
                     </div>
                     
@@ -847,7 +799,7 @@
                         <img src="Vanguardismo/imagenes/obras/dalloway.png" alt="La señora Dalloway - Virginia Woolf (1925)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>La señora Dalloway - Virginia Woolf (1925)</h2>
-                            <p>"La señora Dalloway dijo que ella misma compraría las flores." (*La señora Dalloway*)</p>
+                            <p>"La señora Dalloway dijo que ella misma compraría las flores." (<b>La señora Dalloway</b>)</p>
                         </div>
                     </div>
                     
@@ -855,7 +807,7 @@
                         <img src="Vanguardismo/imagenes/obras/alcools.png" alt="Alcools - Guillaume Apollinaire (1913)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Alcools - Guillaume Apollinaire (1913)</h2>
-                            <p>"Y beberemos como los piratas que beben para emborracharse la vida." (*Alcools*)</p>
+                            <p>"Y beberemos como los piratas que beben para emborracharse la vida." (<b>Alcools</b>)</p>
                         </div>
                     </div>
                     
@@ -863,7 +815,7 @@
                         <img src="Vanguardismo/imagenes/obras/caligramas.png" alt="Caligramas - Guillaume Apollinaire (1918)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Caligramas - Guillaume Apollinaire (1918)</h2>
-                            <p>"Todo poeta es un pintor, todo pintor es un poeta." (*Caligramas*)</p>
+                            <p>"Todo poeta es un pintor, todo pintor es un poeta." (<b>Caligramas</b>)</p>
                         </div>
                     </div>
                     
@@ -871,7 +823,7 @@
                         <img src="Vanguardismo/imagenes/obras/altazor.png" alt="Altazor - Vicente Huidobro (1931)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Altazor - Vicente Huidobro (1931)</h2>
-                            <p>"Canta el avión en la tormenta y mi vida cuelga de un hilo." (*Altazor*)</p>
+                            <p>"Canta el avión en la tormenta y mi vida cuelga de un hilo." (<b>Altazor</b>)</p>
                         </div>
                     </div>
                     
@@ -879,7 +831,7 @@
                         <img src="Vanguardismo/imagenes/obras/equatorial.png" alt="Equatorial - Vicente Huidobro (1918)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Equatorial - Vicente Huidobro (1918)</h2>
-                            <p>"El verso libre es libre como la lluvia que cae, como las hojas que vuelan." (*Equatorial*)</p>
+                            <p>"El verso libre es libre como la lluvia que cae, como las hojas que vuelan." (<b>Equatorial</b>)</p>
                         </div>
                     </div>
                     
@@ -887,7 +839,7 @@
                         <img src="Vanguardismo/imagenes/obras/manifiesto_futurista.png" alt="Manifiesto Futurista - Filippo Tommaso Marinetti (1909)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Manifiesto Futurista - Filippo Tommaso Marinetti (1909)</h2>
-                            <p>"Queremos exaltar el movimiento agresivo, la fiebre insomne, el salto mortal, la bofetada y el puñetazo." (*Manifiesto Futurista*)</p>
+                            <p>"Queremos exaltar el movimiento agresivo, la fiebre insomne, el salto mortal, la bofetada y el puñetazo." (<b>Manifiesto Futurista</b>)</p>
                         </div>
                     </div>
                     
@@ -895,7 +847,7 @@
                         <img src="Vanguardismo/imagenes/obras/zang_tumb_tumb.png" alt="Zang Tumb Tumb - Filippo Tommaso Marinetti (1914)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Zang Tumb Tumb - Filippo Tommaso Marinetti (1914)</h2>
-                            <p>"Las palabras en libertad corren como caballos salvajes por la página." (*Zang Tumb Tumb*)</p>
+                            <p>"Las palabras en libertad corren como caballos salvajes por la página." (<b>Zang Tumb Tumb</b>)</p>
                         </div>
                     </div>
                     
@@ -903,7 +855,7 @@
                         <img src="Vanguardismo/imagenes/obras/manifiesto_surrealista.png" alt="Manifiesto Surrealista - André Breton (1924)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Manifiesto Surrealista - André Breton (1924)</h2>
-                            <p>"El surrealismo es un dictado del pensamiento, sin la intervención reguladora de la razón." (*Manifiesto Surrealista*)</p>
+                            <p>"El surrealismo es un dictado del pensamiento, sin la intervención reguladora de la razón." (<b>Manifiesto Surrealista</b>)</p>
                         </div>
                     </div>
                     
@@ -911,7 +863,7 @@
                         <img src="Vanguardismo/imagenes/obras/nadja.png" alt="Nadja - André Breton (1928)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Nadja - André Breton (1928)</h2>
-                            <p>"¿Quién soy yo? Si tan solo lo supiera." (*Nadja*)</p>
+                            <p>"¿Quién soy yo? Si tan solo lo supiera." (<b>Nadja</b>)</p>
                         </div>
                     </div>
                                         
@@ -919,7 +871,7 @@
                         <img src="Vanguardismo/imagenes/obras/poeta_ny.png" alt="Poeta en Nueva York - Federico García Lorca (1940)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Poeta en Nueva York - Federico García Lorca (1940)</h2>
-                            <p>"Nueva York de cieno, Nueva York de alambre y muerte." (*Poeta en Nueva York*)</p>
+                            <p>"Nueva York de cieno, Nueva York de alambre y muerte." (<b>Poeta en Nueva York</b>)</p>
                         </div>
                     </div>
                     
@@ -927,7 +879,7 @@
                         <img src="Vanguardismo/imagenes/obras/bodas_de_sangre.png" alt="Bodas de sangre - Federico García Lorca (1933)">
                         <div class="carousel-caption" style="opacity: 0;">
                             <h2>Bodas de sangre - Federico García Lorca (1933)</h2>
-                            <p>"¡Ay! Que aquello era un río, ay, que aquello no era un río." (*Bodas de sangre*)</p>
+                            <p>"¡Ay! Que aquello era un río, ay, que aquello no era un río." (<b>Bodas de sangre</b>)</p>
                         </div>
                     </div>
 
@@ -1107,43 +1059,48 @@
         </details>
 
         <section id="competencia" class="quiz-section">
-            
-            <section id="quiz" class="quiz">
-            
-                <h2>Pregunta</h2>
-                
-                <CENTER><p id="numeroSeleccionado"></p></CENTER>
-                    
-                <div>
-                    <button id="seleccionarNumero">QUIZ</button>
-                </div>
-                
-            </section>
 
-            <section id="equipos" class="teams">
+            <h2> Dinámica </h2>
 
-                <h2>Equipos</h2>
+            <div style="display: flex; gap: 15px">
+
+                <section id="quiz" class="quiz">
         
-                <center><p id="participantesSeleccionados"></p></center>
-        
-                <div>
-                    <button id="girarRuleta">MATCH</button>
-                    <button id="revertirRuleta">REINICIAR</button>
-                </div>
-        
-            </section>
-                
-            <section id="timer" class="timer">
-            
-                <h2>Tiempo</h2>
-                
-                <CENTER><p id="contador"></p></CENTER>
+                    <h2>Pregunta</h2>
                     
-                <div>
-                    <button id="cuenta">CUENTA ATRÁS</button>
-                </div>
+                    <CENTER><p id="numeroSeleccionado"></p></CENTER>
+                        
+                    <div>
+                        <button id="seleccionarNumero">QUIZ</button>
+                    </div>
+                    
+                </section>
+    
+                <section id="equipos" class="teams">
+    
+                    <h2>Equipos</h2>
+                        
+                    <div>
+                        <button id="girarRuleta">MATCH</button>
+                        <button id="revertirRuleta">REINICIAR</button>
+                    </div>
+            
+                </section>
+                    
+                <section id="timer" class="timer">
                 
-            </section>
+                    <h2>Tiempo</h2>
+                    
+                    <CENTER><p id="contador"></p></CENTER>
+                        
+                    <div>
+                        <button id="cuenta">CUENTA ATRÁS</button>
+                    </div>
+                    
+                </section>                
+
+            </div>
+
             
         </section>
         
@@ -1198,11 +1155,9 @@
 
             <div class="footer-section links">
                 <h2>Enlaces Inútiles</h2>
-                <ul>
-                    <li><a href="#">Integrantes</a></li>
-                    <li><a href="#">Índice</a></li>
-                    <li><a href="#">Dinámica</a></li>
-                </ul>
+                <p style="margin: 0"><a href="#expositores">Integrantes</a></p>
+                <p style="margin: 0"><a href="#indice">Índice</a></p>
+                <p style="margin: 0"><a href="#competencia">Dinámica</a></p>
             </div>
 
             <div class="footer-section contact">
@@ -1219,14 +1174,17 @@
 
     </footer>
         
-    <script>
+    <script> // Dinámica
+
         let participantes = [
-            "Balanta Arboleda", "Arboleda Tamayo", "Alvarez Taquinas", "Barahona Congolino", "Caicedo Samboni", 
-            "Ibarra Garces", "Cuero Orobio", "Chamorro Varón", "Santillana Piedrahita", "Colorado Estacio", 
-            "Zapata Garcia", "Mejia Valdes", "Rosero Caicedo", "Suarez Cardona", "Garces Longa", 
-            "Sinisterra Mosquera", "Riascos Carabali", "Rivera Chamorro", "Salas Ocoro", "Chirimia Chiripua", 
-            "Cuellar Portocarrero", "Taborda Perlaza", "Montaño Mondragon"
+            "Alvarez Taquinas", "Arboleda Tamayo", "Balanta Arboleda", "Barahona Congolino", 
+            "Caicedo Samboni", "Chamorro Varón", "Chirimia Chiripua", "Colorado Estacio", 
+            "Cuellar Portocarrero", "Cuero Orobio", "Garces Longa", "Ibarra Garces", 
+            "Mejia Valdes", "Montaño Mondragon", "Riascos Carabali", "Rivera Chamorro", 
+            "Rosero Caicedo", "Salas Ocoro", "Santillana Piedrahita", "Sinisterra Mosquera", 
+            "Suarez Cardona", "Taborda Perlaza", "Zapata Garcia"
         ];
+
         let participantesOriginales = [...participantes];
         let equipos = { equipo1: [], equipo2: [], equipo3: [] };
         
@@ -1243,8 +1201,6 @@
             equipos.equipo2 = shuffled.slice(8, 16);
             equipos.equipo3 = shuffled.slice(16, 23);
             
-            mostrarEquipos();
-            
             let nuevosPuntajes = puntajes.filter(p => !equipos.equipo1.includes(p.nombre) && !equipos.equipo2.includes(p.nombre) && !equipos.equipo3.includes(p.nombre));
             [...equipos.equipo1, ...equipos.equipo2, ...equipos.equipo3].forEach(nombre => {
                 nuevosPuntajes.unshift({ nombre, puntos: 0 });
@@ -1252,15 +1208,6 @@
             puntajes = nuevosPuntajes;
     
             construirTabla();
-        }
-    
-        function mostrarEquipos() {
-            const participantesSeleccionados = `
-                <strong>Equipo 1:</strong> ${equipos.equipo1.join(', ')}<br>
-                <strong>Equipo 2:</strong> ${equipos.equipo2.join(', ')}<br>
-                <strong>Equipo 3:</strong> ${equipos.equipo3.join(', ')}
-            `;
-            document.getElementById('participantesSeleccionados').innerHTML = participantesSeleccionados;
         }
     
         function revertirRuleta() {
@@ -1342,8 +1289,8 @@
                                     <td>${participante.nombre}</td>
                                     <td style='text-align:center;'>${participante.puntos}</td>
                                     <td style='text-align:right;'>
-                                        <button onclick="modificarPuntos('${participante.nombre}', 1)">+</button>
-                                        <button onclick="modificarPuntos('${participante.nombre}', -1)">-</button>
+                                        <button onclick="modificarPuntos('${participante.nombre}', 1)" style="width: 12vw">+</button>
+                                        <button onclick="modificarPuntos('${participante.nombre}', -1)" style="width: 12vw">-</button>
                                     </td>
                                 </tr>
                             `;
@@ -1377,7 +1324,7 @@
     
     </script>
 
-    <script>
+    <script> // Carrusel de Fotos
 
         document.addEventListener('DOMContentLoaded', function() {
             const carousels = document.querySelectorAll('.carousel');
@@ -1410,6 +1357,10 @@
             });
         });
 
+    </script>
+
+    <script> // Pasar entre secciones
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1418,6 +1369,10 @@
                 });
             });
         });
+
+    </script>
+    
+    <script> // Bloqueo y Desbloqueo de Pagína
 
         function bloquearPagina() {
             document.head.innerHTML = '';
@@ -1436,23 +1391,22 @@
                 </div>
 
                 <style>
-                
+                    .unlock-button {
+                        opacity: 0.5;
+                        background-color: lightgray;
+                        padding: 10px 20px;
+                        border: 2px solid rgba(100, 50, 100, 0.6);
+                        border-radius: 15px; 
+                        font-size: 16px;
+                        cursor: pointer; 
+                        transition: ease-in 0.3s
+                    }
+
                     .unlock-button:hover {
                         opacity: 1;
                         background-color: rgba(100, 50, 100, 0.8);
                         transform: scale(1.1);
                         color: white;
-                    }
-                    
-                    .unlock-button {
-                        opacity: 0.5;
-                        background-color: lightgray;
-                        padding: 10px 20px;
-                        border: 2px rgba(100, 50, 100, 0.6) solid;
-                        border-radius: 15px; 
-                        font-size: 16px;
-                        cursor: pointer; 
-                        transition: ease-in 0.3s
                     }
                     
                 </style>
@@ -1488,7 +1442,7 @@
         } else {
             setTimeout(pedirClave, 25 * 60 * 1000);
         }
-        
+
     </script>
 
 </body>
