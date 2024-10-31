@@ -1146,6 +1146,23 @@
 
     </script>
 
+    <script> // Ir a la dinámica
+        
+        document.addEventListener('keydown', function(event) {
+          if ((event.key === 'B' && event.shiftKey) || event.key === 'B') {
+            const password = prompt("Introduce la clave de administrador:");
+    
+            if (password === '4dm1n') {
+                alert("Clave incorrecta. Inténtalo de nuevo.");
+                window.location.href = 'index-admin.html';
+            } else {
+                alert("Clave incorrecta. Inténtalo de nuevo.");
+            }
+          }
+        });
+          
+  </script>
+
 </body>
 
 </html>
