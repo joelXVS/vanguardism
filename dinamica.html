@@ -454,6 +454,7 @@
     
         function iniciarContador() {
             let numeroInicial = obtenerNumeroAleatorio(30, 60);
+            document.getElementById('contador').innerHTML = ``;
             document.getElementById('contador').innerHTML = `${numeroInicial} s`;
     
             let contador = numeroInicial;
