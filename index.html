@@ -1069,7 +1069,8 @@
     <script> // Bloqueo y Desbloqueo de Pagína
 
         function bloquearPagina() {
-            document.head.innerHTML = '';
+            document.head.innerHTML = ´
+                <title> Pagína Bloqueada </title>´;
             
             document.body.innerHTML = `
                 <div style="padding: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Verdana', serif; color: rgba(100, 50, 100, 0.6); background-color: whitesmoke; border-radius: 18px; text-align: center">
@@ -1079,7 +1080,7 @@
                     </h3>
                     
                     <button class='unlock-button' id="desbloquearBtn">
-                        ¿Desbloquear?
+                        ¿Desbloquear Página?
                     </button>
                     
                 </div>
