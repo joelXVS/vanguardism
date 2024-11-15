@@ -458,10 +458,6 @@
         function iniciarContador() {
             if (intervaloActual) {
                 clearInterval(intervaloActual);
-                timerRunning = false;
-                document.getElementById('cuenta').textContent = 'CUENTA ATRÁS';
-                document.getElementById('contador').innerHTML = '';
-                return;
             }
         
             let numeroInicial = obtenerNumeroAleatorio(30, 60);
