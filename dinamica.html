@@ -480,9 +480,22 @@
             timerRunning = true;
             document.getElementById('cuenta').textContent = 'REINICIAR';
         }
-    
+        
+        function reiniciarContador() {
+        if (intervaloActual) {
+            clearInterval(intervaloActual);
+        }
+        document.getElementById('contador').innerHTML = '0 s';
+        document.getElementById('cuenta').textContent = 'CUENTA ATRÁS';
+        timerRunning = false;
+    }
+
         document.getElementById('cuenta').addEventListener('click', function() {
-            iniciarContador();
+            if (this.textContent === 'CUENTA ATRÁS') {
+                iniciarContador();
+            } else {
+                reiniciarContador();
+            }
         });
     
         let puntajes = [...participantes].map(nombre => ({ nombre, puntos: 0 }));
