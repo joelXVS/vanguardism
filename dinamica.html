@@ -323,6 +323,8 @@
                         
                     <div>
                         <button id="cuenta">CUENTA ATRÁS</button>
+                        <button id="pausarReanudar" style="display: none;">PAUSAR</button>
+                        <button id="reiniciar" style="display: none;">REINICIAR</button>
                     </div>
                     
                 </section>                
@@ -453,10 +455,36 @@
         }
 
         let intervaloActual;
+        let audioActual;
+        let tiempoPausado = 0;
+        let estaReproduciendo = false;
+
+        const sonidos = {
+            1: 'Vanguardismo/sonidos/001.wav',
+            2: 'Vanguardismo/sonidos/002.wav',
+            3: 'Vanguardismo/sonidos/003.wav',
+            4: 'Vanguardismo/sonidos/004.wav',
+            5: 'Vanguardismo/sonidos/005.wav',
+            6: 'Vanguardismo/sonidos/006.wav',
+            7: 'Vanguardismo/sonidos/007.wav',
+            8: 'Vanguardismo/sonidos/008.wav',
+            9: 'Vanguardismo/sonidos/009.wav',
+            10: 'Vanguardismo/sonidos/010.wav',
+            11: 'Vanguardismo/sonidos/011.wav',
+            12: 'Vanguardismo/sonidos/012.wav',
+            13: 'Vanguardismo/sonidos/013.wav',
+            14: 'Vanguardismo/sonidos/014.wav',
+            15: 'Vanguardismo/sonidos/015.wav',
+            16: 'Vanguardismo/sonidos/016.wav',
+        };
 
         function iniciarContador() {
             if (intervaloActual) {
                 clearInterval(intervaloActual);
+            }
+            if (audioActual) {
+                audioActual.pause();
+                audioActual.currentTime = 0;
             }
         
             let numeroInicial = obtenerNumeroAleatorio(30, 60);
@@ -470,11 +498,55 @@
                 if (contador <= 0) {
                     clearInterval(intervaloActual); 
                     document.getElementById('contador').innerHTML = '<b>¡Tiempo!</b>';
+                    if (audioActual) {
+                        audioActual.pause();
+                    }
                 }
             }, 1000);
+
+            const numeroSeleccionado = document.getElementById('numeroSeleccionado').textContent.replace('Pregunta ', '');
+            if (sonidos[numeroSeleccionado]) {
+                audioActual = new Audio(sonidos[numeroSeleccionado]);
+                audioActual.play();
+                estaReproduciendo = true;
+            }
+
+            document.getElementById('pausarReanudar').style.display = 'block';
+            document.getElementById('reiniciar').style.display = 'block';
         }
     
         document.getElementById('cuenta').addEventListener('click', function() {
+            iniciarContador();
+        });
+
+        document.getElementById('pausarReanudar').addEventListener('click', function() {
+            if (estaReproduciendo) {
+                audioActual.pause();
+                clearInterval(intervaloActual);
+                tiempoPausado = parseInt(document.getElementById('contador').textContent);
+                this.textContent = 'REANUDAR';
+            } else {
+                audioActual.play();
+                intervaloActual = setInterval(() => {
+                    tiempoPausado--;
+                    document.getElementById('contador').innerHTML = `${tiempoPausado} s`;
+                    if (tiempoPausado <= 0) {
+                        clearInterval(intervaloActual);
+                        document.getElementById('contador').innerHTML = '<b>¡Tiempo!</b>';
+                        audioActual.pause();
+                    }
+                }, 1000);
+                this.textContent = 'PAUSAR';
+            }
+            estaReproduciendo = !estaReproduciendo;
+        });
+
+        document.getElementById('reiniciar').addEventListener('click', function() {
+            if (audioActual) {
+                audioActual.pause();
+                audioActual.currentTime = 0;
+                audioActual.play();
+            }
             iniciarContador();
         });
     
