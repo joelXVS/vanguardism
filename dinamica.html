@@ -453,10 +453,15 @@
         }
 
         let intervaloActual;
-
+        let timerRunning = false;
+    
         function iniciarContador() {
             if (intervaloActual) {
                 clearInterval(intervaloActual);
+                timerRunning = false;
+                document.getElementById('cuenta').textContent = 'CUENTA ATRÁS';
+                document.getElementById('contador').innerHTML = '';
+                return;
             }
         
             let numeroInicial = obtenerNumeroAleatorio(30, 60);
@@ -468,10 +473,16 @@
                 document.getElementById('contador').innerHTML = `${contador} s`;
         
                 if (contador <= 0) {
-                    clearInterval(intervaloActual); 
+                    clearInterval(intervaloActual);
+                    intervaloActual = null;
+                    timerRunning = false;
                     document.getElementById('contador').innerHTML = '<b>¡Tiempo!</b>';
+                    document.getElementById('cuenta').textContent = 'CUENTA ATRÁS';
                 }
             }, 1000);
+    
+            timerRunning = true;
+            document.getElementById('cuenta').textContent = 'REINICIAR';
         }
     
         document.getElementById('cuenta').addEventListener('click', function() {
